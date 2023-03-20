@@ -6,12 +6,24 @@
     <artifactId>readyapi-swagger-assertion-plugin</artifactId>
     <groupId>com.smartbear</groupId>
 
-    <repositories>
-        <repository>
+    <repositories>       	
+		<repository>
+            <id>scijava</id>
+            <name>SciJava Public Repository</name>
+            <url>https://maven.scijava.org/content/repositories/public/</url>
+        </repository>
+		<repository>
             <id>eviware</id>
             <name>Eviware Maven2 Repository</name>
             <url>http://www.eviware.com/repository/maven2</url>
         </repository>
+        <repository>
+            <id>soapUI Repository</id>
+            <url>https://www.soapui.org/repository/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>		
         <repository>
             <id>central</id>
             <name>Central Maven2 Repository</name>
@@ -65,10 +77,19 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+		<!-- Preventing CVE-2021-44228 log4j vulnerability -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.20.0</version>
+		</dependency>		
     </dependencies>
 
     <properties>
-        <json-schema-validator-version>2.2.6</json-schema-validator-version>
+        <!-- Latest version (2.2.14) with expected interface structure -->
+		<json-schema-validator-version>2.2.14</json-schema-validator-version>
+		<maven.compiler.source>1.8</maven.compiler.source> 
+		<maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <build>
